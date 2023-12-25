@@ -37,6 +37,14 @@ function num_steps_along!(robot, direction)::Int
     return steps
 end
 
+function marker_row!(robot, side)
+    putmarker!(robot)
+    while !isborder(robot, side)
+        move!(robot, side)
+        putmarker!(robot)
+    end
+end
+
 """
 along_search!(robot, direction, num_steps)
 -- перемещает робота в заданном направлении на заданное 

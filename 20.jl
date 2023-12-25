@@ -1,0 +1,21 @@
+# Написать рекурсивную функцию, перемещающую робота до упора в
+# заданном направлении, ставящую возле перегородки маркер и возвращающую
+# робота в исходное положение.
+
+using HorizonSideRobots
+include("func.jl")
+r = Robot("untitled.sit", animate = true)
+
+function recursion_mark_along!(robot, side)
+    if !isborder(robot, side)
+        move!(robot, side)
+        recursion_mark_along!(robot, side)
+        move!(robot, inverse(side))
+    else
+        putmarker!(robot)
+    end
+end
+
+for side in (Nord, West, Sud, Ost)
+    recursion_mark_along!(r, side)
+end

@@ -1,7 +1,14 @@
+# ДАНО: Робот находится в произвольной клетке ограниченного
+# прямоугольного поля без внутренних перегородок и маркеров.
+
+# РЕЗУЛЬТАТ: Робот — в исходном положении в центре прямого креста из
+# маркеров, расставленных вплоть до внешней рамки.
+
 using HorizonSideRobots
 include("func.jl")
-r = Robot("untitled.sit",animate = true)
-function mark_cross!(robot)::Nothing
+r = Robot("untitled.sit", animate=true)
+
+function mark_cross!(robot)
     putmarker!(robot)
     for side in 0:3
         line_mark!(robot, HorizonSide(side))
